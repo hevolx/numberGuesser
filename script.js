@@ -33,7 +33,10 @@ function numberRange(guess) {
     if ((guess >= 0) && (guess <= 9)) {
         return guess;
     } else {
+        return true;
+    } else {
         window.alert('Number out of range');
+        return false;
     }
 }
 function getAbsoluteDistance(difference, target) {
