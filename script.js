@@ -11,8 +11,6 @@ function compareGuesses(currentHumanGuess, computerGuess, target) {
     numberRange(currentHumanGuess);
     const humanDifference = getAbsoluteDistance(currentHumanGuess, target);
     const computerDifference = getAbsoluteDistance(computerGuess, target);
-    if ((humanDifference < computerDifference) || currentHumanGuess === target) {
-        return true; // Human is closer
     // First, check for exact matches
     if (currentHumanGuess === target && computerGuess === target) {
         return true; // Both guessed exactly, tie goes to human
@@ -31,16 +29,14 @@ function compareGuesses(currentHumanGuess, computerGuess, target) {
 
 function numberRange(guess) {
     if ((guess >= 0) && (guess <= 9)) {
-        return guess;
-    } else {
         return true;
     } else {
         window.alert('Number out of range');
         return false;
     }
 }
-function getAbsoluteDistance(difference, target) {
-    difference = Math.abs(difference - target);
+function getAbsoluteDistance(guess, target) {
+    let difference = Math.abs(guess - target);
     return difference;
 }
 
