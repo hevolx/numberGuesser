@@ -13,7 +13,16 @@ function compareGuesses(currentHumanGuess, computerGuess, target) {
     const computerDifference = getAbsoluteDistance(computerGuess, target);
     if ((humanDifference < computerDifference) || currentHumanGuess === target) {
         return true; // Human is closer
-    } else if ((computerDifference < humanDifference) || computerGuess === target) {
+    // First, check for exact matches
+    if (currentHumanGuess === target && computerGuess === target) {
+        return true; // Both guessed exactly, tie goes to human
+    } else if (currentHumanGuess === target) {
+        return true; // Human guessed exactly
+    } else if (computerGuess === target) {
+        return false; // Computer guessed exactly
+    } else if (humanDifference < computerDifference) {
+        return true; // Human is closer
+    } else if (computerDifference < humanDifference) {
         return false; // Computer is closer
     } else {
         return true; // Tie goes to human
